@@ -1,0 +1,17 @@
+[0829/041519.481:ERROR:scoped_process_suspend.cc(31)] NtSuspendProcess: An attempt was made to access an exiting process. (0xc000010a)
+[0829/041519.629:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0829/041519.629:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0829/041519.629:ERROR:exception_snapshot_win.cc(98)] thread ID 14804 not found in process
+[0829/041519.629:ERROR:exception_snapshot_win.cc(98)] thread ID 12676 not found in process
+[0829/041519.630:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0829/041519.630:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0829/041519.638:ERROR:exception_snapshot_win.cc(98)] thread ID 5384 not found in process
+[0829/041519.632:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0829/041519.631:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0829/041519.633:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0829/041519.638:ERROR:exception_snapshot_win.cc(98)] thread ID 9228 not found in process
+[0829/041519.638:ERROR:exception_snapshot_win.cc(98)] thread ID 7080 not found in process
+[0829/041519.638:ERROR:exception_snapshot_win.cc(98)] thread ID 6280 not found in process
+[0829/041519.638:ERROR:exception_snapshot_win.cc(98)] thread ID 8408 not found in process
+[0829/041519.627:ERROR:process_info.cc(118)] ReadProcessMemory bool __cdecl crashpad::(anonymous namespace)::ReadStruct(HANDLE, crashpad::WinVMAddress, T *) [T = crashpad::process_types::PEB<crashpad::process_types::internal::Traits64>]: Only part of a ReadProcessMemory or WriteProcessMemory request was completed. (0x12B)
+[0829/041519.656:ERROR:process_info.cc(551)] ReadProcessData failed

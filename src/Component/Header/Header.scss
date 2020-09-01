@@ -1,0 +1,128 @@
+header{
+    .header-top{
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .header-logo {
+            padding: 10px 0;
+            img{
+                width: 95%;
+            }
+        }
+        .search {
+            flex-basis: 40rem;
+            .has-search .form-control {
+                padding-left: 2.375rem;
+            }
+            
+             .form-control-feedback {
+                position: absolute;
+                z-index: 2;
+                display: block;
+                width: 2.375rem;
+                height: 2.375rem;
+                line-height: 2.375rem;
+                text-align: center;
+                pointer-events: none;
+                color: #aaa;
+            }
+        }
+        .profile{
+            margin-right: 100px;
+        }
+        .cart {
+    
+            font-size: 30px;
+            cursor: pointer;
+            i{
+                position: relative;
+                &:hover{
+                    color:  #3f51b5;
+                    transition: all 0.5s;
+                }
+                span.cartVal{
+                    position: absolute;
+                    top: -20px;
+                    color: white;
+                    background-color: #f50057;
+                    border-radius: 50%;
+                    font-size: 20px;
+                    text-align: center;
+                    line-height: 25px;
+                    width: 25px;
+                }
+            }
+
+        }
+        .accout {
+            
+            font-size: 35px;
+            margin: 0 10px;
+            cursor: pointer;
+            
+        }
+    }
+    .header-bottom{
+        background: #1f2022;
+    
+    div#collapsibleNavId {
+        text-align: center;
+    }
+    li.nav-item {
+        margin-right: 14px;
+        font-size: 17px;
+        font-weight: 500;    
+        a{
+            color: white;
+            &:hover{
+                color: #ffe544;
+                transition: all 1s;
+            }
+        }
+    }
+        
+        
+    }
+}
+
+//Reponsive
+
+@media only screen and (max-width: 1200px) {
+    header{
+        .header-top{
+        .search {
+            flex-basis: 30rem;
+        }}
+    }
+  }
+
+  @media only screen and (max-width: 992px) {
+    header{
+        .header-top{
+        .search {
+            flex-basis: 18rem;
+        }}
+    }
+    .header-bottom{
+    li.nav-item {
+        a{
+            font-size: 14px;
+            font-weight: 500;  
+        } 
+    }     
+        
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    header{
+        .header-top{
+            .header-logo{
+                flex-basis: 60%;
+            }
+        .search {
+            display: none;
+        }}
+    }
+  }

@@ -1,0 +1,54 @@
+.oneSection{
+    img{
+        width: 100%;
+    height: auto;
+    }
+    .oneSection-left{
+        text-align:center;
+        .counter{
+            .counter_number{
+                font-size: 45px;
+                line-height: 50px;
+                font-weight: 900;
+                color: #cda02e;
+            }
+            .counter_title{
+                font-size: 24px;
+                line-height: 30px;
+                font-weight: 400;
+                font-style: normal;
+            }
+        }
+    }
+    .oneSection-right{
+        .content{
+            text-align: justify;
+            font-size: 17px;
+            font-weight: 400;
+            color: #727272;
+        }
+    }
+}
+
+@media only screen and(max-width:776px){
+    .oneSection{
+        .oneSection-left{
+            text-align:center;
+            .counter{
+                .counter_number{
+                    font-size: 45px;
+                    line-height: 50px;
+                    font-weight: 900;
+                    color: #cda02e;
+                }
+                .counter_title{
+                    font-size: 24px;
+                    line-height: 30px;
+                    font-weight: 400;
+                    font-style: normal;
+                }
+            }
+        }
+        
+    }
+}

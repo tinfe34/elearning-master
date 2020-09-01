@@ -1,0 +1,54 @@
+.courseDetail{
+    .mainTop{
+        p{
+            text-align: justify;
+            font-size: 20px;
+            font-weight: 400;
+            
+            text-align: justify;
+            
+        }
+        .content{
+            .content_left{
+                h1{
+                    
+                    text-transform: uppercase;
+                }
+                ol{
+                    li{
+                        font-size: 20px;
+                        font-weight: 400;
+                    }
+                }
+                
+                
+            }
+            .content_right{
+                .video{
+                    position: relative;
+                img{
+                    width: 100%;
+                    max-height: 400px;
+                    filter: brightness(0.5);
+                 }
+                 .video_icon{
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    font-size: 70px;
+                    color: #fff;           
+                    transform: translate(-50%, -50%);
+                    cursor: pointer;
+                    
+                }
+                
+                }
+                .time{
+                    p{
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
