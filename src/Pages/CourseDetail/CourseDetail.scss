@@ -1,5 +1,8 @@
 .courseDetail{
     .mainTop{
+        h1{
+            color: #3f51b5;
+        }
         p{
             text-align: justify;
             font-size: 20px;
@@ -28,7 +31,7 @@
                     position: relative;
                 img{
                     width: 100%;
-                    max-height: 400px;
+                    max-height: 340px;
                     filter: brightness(0.5);
                  }
                  .video_icon{
@@ -49,6 +52,12 @@
                     }
                 }
             }
+        }
+    }
+    .mainBottom{
+        li.nav-item {
+            font-size: 20px;
+            font-weight: bold;
         }
     }
 }

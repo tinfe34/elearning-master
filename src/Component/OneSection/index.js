@@ -2,9 +2,23 @@ import React, { Component } from 'react'
 import bg1 from './../../Assets/img/final_location.png'
 import bg2 from './../../Assets/img/cybersoft-lap-trinh-.jpg'
 import './OneSection.scss';
+import CountUp, { startAnimation } from 'react-countup';
+import VisibilitySensor from 'react-visibility-sensor';
 
 export default class OneSection extends Component {
+    state = {
+        scrollStatus: true
+    };
+    onVisibilityChange = isVisible => {
+        if (isVisible) {
+            if (this.state.scrollStatus) {
+                startAnimation(this.myCountUp);
+                this.setState({ scrollStatus: false });
+            }
+        }
+    }
     render() {
+
         return (
             <div className="oneSection my-5">
                 <div className="container">
@@ -15,13 +29,30 @@ export default class OneSection extends Component {
                                 <div class="row">
                                     <div className="col-4">
                                         <div className="counter">
-                                            <p className="counter_number">4</p>
+                                            <p className="counter_number">
+                                            <CountUp end={4} redraw={true}>
+                                                    {({ countUpRef, start }) => (
+                                                        <VisibilitySensor onChange={start} delayedCall>
+                                                            <span ref={countUpRef} />
+                                                        </VisibilitySensor>
+                                                    )}
+                                                </CountUp>
+                                            </p>
                                             <p className="counter_title">Trung Tâm</p>
                                         </div>
                                     </div>
                                     <div className="col-4">
                                         <div className="counter">
-                                            <p className="counter_number">3250</p>
+                                            <p className="counter_number">
+
+                                                <CountUp end={3250} redraw={true}>
+                                                    {({ countUpRef, start }) => (
+                                                        <VisibilitySensor onChange={start} delayedCall>
+                                                            <span ref={countUpRef} />
+                                                        </VisibilitySensor>
+                                                    )}
+                                                </CountUp>
+                                            </p>
                                             <p className="counter_title">Học Viên</p>
                                         </div>
 
@@ -29,7 +60,15 @@ export default class OneSection extends Component {
 
                                     <div className="col-4">
                                         <div className="counter">
-                                            <p className="counter_number">54</p>
+                                            <p className="counter_number">
+                                                <CountUp end={54} redraw={true}>
+                                                    {({ countUpRef, start }) => (
+                                                        <VisibilitySensor onChange={start} delayedCall>
+                                                            <span ref={countUpRef} />
+                                                        </VisibilitySensor>
+                                                    )}
+                                                </CountUp>
+                                            </p>
                                             <p className="counter_title">Đối Tác</p>
                                         </div>
 
@@ -42,7 +81,7 @@ export default class OneSection extends Component {
                         </div>
                         <div className="col-12 col-md-5 col-lg-4 ">
                             <div className="oneSection-right">
-                                
+
                                 <img className="logo" src={bg2} />
                                 <h3 class="title my-3" ><i className="fa fa-graduation-cap mr-3"></i>Đào tạo nghề lập trình chuyên sâu</h3>
                                 <p className="content">

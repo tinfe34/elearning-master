@@ -36,9 +36,9 @@ export default class Register extends Component {
 
     render() {
         return (
-           <div className="bg-wrapper">
-                <div  className="m-auto py-5" style={{ width: 444 }}>
-                <h1 className="text-center text-danger">ĐĂNG KÝ</h1>
+           <div className="bgRegister">
+                <div  className="content" >
+                <h3 className="text-center text-danger pb-3">ĐĂNG KÝ</h3>
                 <Formik
                     initialValues={
                         {
@@ -60,30 +60,30 @@ export default class Register extends Component {
                         <Form onSubmit={props.handleSubmit}>
 
                             <div className="form-group">
-                                <label>Tài Khoản</label>
-                                <Field type="text" name="taiKhoan" className="form-control" value={props.valuestaiKhoan} onChange={props.handleChange} 
+                               
+                                <Field type="text" placeholder="Tài Khoản*" name="taiKhoan" className="form-control" value={props.valuestaiKhoan} onChange={props.handleChange} 
                                 
                                 />
                                 <ErrorMessage   name="taiKhoan">{(msg) => <div className="text-danger">{msg}</div>}</ErrorMessage>
                             </div>
                             <div className="form-group">
-                                <label>Mật Khẩu</label>
-                                <Field  type="text" name="matKhau" className="form-control" value={props.values.matKhau} onChange={props.handleChange} />
+                                
+                                <Field  type="text" placeholder="Mật Khẩu*" name="matKhau" className="form-control" value={props.values.matKhau} onChange={props.handleChange} />
                                 <ErrorMessage   name="matKhau">{(msg) => <div className="text-danger">{msg}</div>}</ErrorMessage>
                             </div>
                             <div className="form-group">
-                                <label>Họ Tên</label>
-                                <Field type="text" name="hoTen" className="form-control" value={props.values.hoTen} onChange={props.handleChange} />
+                                
+                                <Field type="text" name="hoTen" placeholder="Họ Tên*" className="form-control" value={props.values.hoTen} onChange={props.handleChange} />
                                 <ErrorMessage   name="hoTen">{(msg) => <div className="text-danger">{msg}</div>}</ErrorMessage>
                             </div>
                             <div className="form-group">
-                                <label>Email</label>
-                                <Field type="email" name="email" className="form-control" value={props.values.email} onChange={props.handleChange} />
+                               
+                                <Field type="email" name="email" placeholder="Email*" className="form-control" value={props.values.email} onChange={props.handleChange} />
                                 <ErrorMessage   name="email">{(msg) => <div className="text-danger">{msg}</div>}</ErrorMessage>
                             </div>
                             <div className="form-group">
-                                <label>Số Điện Thoại</label>
-                                <Field type="number" name="soDT" className="form-control" value={props.values.soDT} onChange={props.handleChange} />
+                                
+                                <Field type="number" name="soDT" placeholder="Số Điện Thoại*" className="form-control" value={props.values.soDT} onChange={props.handleChange} />
                                 <ErrorMessage  name="soDT">{(msg) => <div className="text-danger">{msg}</div>}</ErrorMessage>
                             </div>
 

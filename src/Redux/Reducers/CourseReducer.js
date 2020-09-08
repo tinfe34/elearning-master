@@ -71,6 +71,7 @@ const CourseReducer = (state = stateCourse, action) => {
             return {...state}
         }
         case 'LOCAL_CART':{
+            
             state.listToCart = action.payload;
             return {...state}
         }

@@ -6,12 +6,13 @@ import Footer from '../../Component/Footer';
 import ModalCart from '../../Component/ModalCart';
 
 const HomeLayout = (props) => {
+
     return (
         <Fragment>
             <Header />
                 {props.children}
             <Footer/>
-            <ModalCart/>
+            
                 
         </Fragment>
     )

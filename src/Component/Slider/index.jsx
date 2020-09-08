@@ -17,7 +17,7 @@ export default class Slider extends Component {
                             <img src={slider1} alt="First slide" />
                         </div>
                         <div className="carousel-item">
-                        <img src={slider1} alt="True slide" />
+                         <img src={slider1} alt="True slide" />
                         </div>
                   
                     </div>

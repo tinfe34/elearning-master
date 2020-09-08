@@ -65,7 +65,7 @@ class ModalCart extends Component {
                                     <td>{course.tenKhoaHoc}</td>
                                     <td> {course.giaBan.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")+ ' VNĐ'}</td>
                                     <td>
-                                        <button className="btn btn-danger" onClick={()=>this.removeToCart(course.maKhoaHoc)} ><i class="fa fa-trash"></i></button>
+                                        <button className="btn btn-danger" onClick={()=>this.removeToCart(course.maKhoaHoc)} ><i className="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
                             )

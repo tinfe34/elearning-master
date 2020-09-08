@@ -3,6 +3,7 @@ import './ThreeSection.scss'
 import video1 from './../../Assets/img/video1.png'
 import video2 from './../../Assets/img/video2.png'
 import contact from './../../Assets/img/contact.png'
+
 export default class ThreeSection extends Component {
     render() {
         return (
@@ -14,7 +15,16 @@ export default class ThreeSection extends Component {
                             <div className="video mb-3">
                                 <img src={video1} width="100%" height="auto" />
                                 <div className="video_icon">
-                                    <i class="fa fa-play-circle"></i>
+                                    <i class="fa fa-play-circle" data-toggle="modal" data-target="#myModal"></i>
+                                </div>
+                            </div>
+                            {/* <!-- The Modal --> */}
+                            <div class="modal fade" id="myModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        
+                                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/4tXk_QiT8cA?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+                                    </div>
                                 </div>
                             </div>
 
@@ -23,7 +33,7 @@ export default class ThreeSection extends Component {
                             <div className="video mb-3">
                                 <img src={video2} width="100%" height="auto" />
                                 <div className="video_icon">
-                                    <i class="fa fa-play-circle"></i>
+                                    <i class="fa fa-play-circle" data-toggle="modal" data-target="#myModal" ></i>
                                 </div>
                             </div>
                         </div>
@@ -33,11 +43,11 @@ export default class ThreeSection extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-12 col-md-6">
-                                <img src={contact} width="100%"alt="" />
+                                <img src={contact} width="100%" alt="" />
                             </div>
-                            <div className="col-12 col-md-6">       
+                            <div className="col-12 col-md-6">
                                 <form>
-                                <h3 className="text-center text-danger mb-5">LIÊN HỆ TƯ VẤN</h3>
+                                    <h3 className="text-center text-danger mb-5">LIÊN HỆ TƯ VẤN</h3>
                                     <div className="form-group">
                                         <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Họ và tên*" />
                                     </div>

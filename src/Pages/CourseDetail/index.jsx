@@ -4,7 +4,8 @@ import { asyncCourseDetail } from '../../Redux/Action/asyncCourseDetail'
 import './CourseDetail.scss'
 import Axios from 'axios'
 import swal from 'sweetalert'
-
+import imgUser from './../../Assets/img/user.jpg'
+import logo from './../../Assets/img/logo.png'
 class CourseDetail extends Component {
 
     toBuyCourse = (maKH) => {
@@ -25,15 +26,15 @@ class CourseDetail extends Component {
                 // console.log(err)
             })
         }
-       else{
-        swal({
-            title: "Vui lòng đăng nhập!",
-            text: '',
-            icon: "warning",
-            button: "OK",
-        });
+        else {
+            swal({
+                title: "Vui lòng đăng nhập!",
+                text: '',
+                icon: "warning",
+                button: "OK",
+            });
 
-       }
+        }
         // console.log(err)
     }
     render() {
@@ -44,31 +45,21 @@ class CourseDetail extends Component {
                 {/* mainTOP */}
                 <div className="mainTop my-5">
                     <div className="content">
-                        <div className="container-fluid">
+                        <div className="container">
                             <div className="row">
 
                                 <div className="col-12 col-md-6">
                                     <div className="content_left">
                                         <h1 className=" my-3">CHUYÊN GIA {courseDetail.tenKhoaHoc}</h1>
                                         <p >
-                                            <span className='review'> <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
+                                            <span className='review'> <i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></span>
                                         </p>
                                         <p><b>Giảng viên: </b>{courseDetail.nguoiTao.hoTen}</p>
                                         <p><b>Lượt xem: </b>{courseDetail.luotXem}</p>
                                         <p><b>Khai giảng: </b>{courseDetail.ngayTao}</p>
 
-                                        <div className="work mt-4">
-                                            <h4 className="text-danger">HỌC XONG LÀM VIỆC TẠI ĐÂU ?</h4>
-                                            <ol>
-                                                <li>Apply vào tất cả công ty </li>
-                                                <li>Các công ty outsourcing</li>
-                                                <li>Các công ty startup</li>
-                                                <li>Công ty, tập đoàn trong nước và nước ngoài...</li>
-                                                <li>Xin thực tập, có dự án bảo vệ đề tài tốt nghiệp,...</li>
-                                                <li>Tìm kiếm công việc freelancer</li>
-                                            </ol>
-                                        </div>
-                                        <button className="btn btn-success p-3 my-3 w-100" onClick={()=>this.toBuyCourse(courseDetail.maKhoaHoc)}>ĐĂNG KÝ NGAY</button>
+
+                                        <button className="btn btn-success p-3 my-3 w-100" onClick={() => this.toBuyCourse(courseDetail.maKhoaHoc)}>ĐĂNG KÝ NGAY</button>
                                     </div>
                                 </div>
 
@@ -77,38 +68,62 @@ class CourseDetail extends Component {
                                         <div className="video">
                                             <img src={courseDetail.hinhAnh} /><br />
                                             <div className="video_icon">
-                                                <i class="fa fa-play-circle"></i>
-                                            </div>
-                                        </div>
-                                        <div className="time mt-5 text-danger">
-                                            <div className="row">
-                                                <div className="col-4">
-                                                   
-                                                    <p>21 TUẦN</p>
-                                                    <p>OFFLINE</p>
-
-                                                </div>
-                                                <div className="col-4">
-
-                                                    <p>126 GIỜ</p>
-                                                    <p>OFFLINE</p>
-
-                                                </div>
-                                                <div className="col-4">
-
-                                                    <p>ONLINE</p>
-                                                    <p>SUPPORT</p>
-
-                                                </div>
+                                                <i className="fa fa-play-circle" data-toggle="modal" data-target="#courseDetail"></i>
                                             </div>
                                         </div>
                                     </div>
+                                      {/* <!-- The Modal --> */}
+                            <div class="modal fade" id="courseDetail">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        
+                                    <iframe width="100%" height="400px" src="https://www.youtube.com/embed/0LTO0H2Duuc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div className="mainBottom">
+                    <div className="container">
+                        <div>
+                            <ul className="nav nav-tabs" id="myTab" role="tablist">
+                                <li className="nav-item" role="presentation">
+                                    <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Mô Tả khóa học</a>
+                                </li>
+                                <li className="nav-item" role="presentation">
+                                    <a className="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Cảm nhận học viên </a>
+                                </li>
 
+                            </ul>
+                            <div className="tab-content p-3" id="myTabContent">
+                                <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">{courseDetail.moTa}</div>
+                                <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div className="media p-3">
+                                        <img src={imgUser} alt="John Doe" className="mr-3 mt-3 rounded-circle" style={{ width: 60 }} />
+                                        <div className="media-body">
+                                            <h4>Lê Hữu Tín <small><i>19 tháng 9, 2020</i></small></h4>
+                                            <p>Khóa Học chất lượng tốt mentor hổ trợ nhiệt tình, và hiện mình đang tìm việc </p>
+                                            <div className="media p-3">
+                                                <img src={logo} alt="Jane Doe" className="mr-3 mt-3 rounded-circle" style={{ width: 45 }} />
+                                                <div className="media-body">
+                                                    <h4>Admin <small><i>20 tháng 9, 2020</i></small></h4>
+                                                    <p>Cảm ơn bạn đã quan tâm khóa học , mong bạn sớm tìm được việc làm</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
 
         )
@@ -135,3 +150,4 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(CourseDetail)
+
