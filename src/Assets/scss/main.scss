@@ -1,0 +1,24 @@
+@import 'font-face';
+@import 'variables/all';
+@import 'functions';
+@import 'mixins';
+@import 'layouts';
+@import 'commons';
+
+//COMPONENTS
+@import "../../Component/Header/Header";
+@import "../../Component/Footer/Footer";
+@import "../../Component/Slider/Slider";
+@import "../../Component/CourseList/CourseList";
+@import "../../Component/Course/Course";
+@import "../../Component/ModalCart/ModalCart";
+@import "../../Component/OneSection/OneSection";
+@import "../../Component/ThreeSection/ThreeSection";
+@import "../../Component/TwoSection/TwoSection";
+
+//PAGES
+@import "../../Pages/CourseDetail/CourseDetail";
+@import "../../Pages/CourseDetail/CourseDetail";
+@import "../../Pages/Login/Login";
+@import "../../Pages/Profile/Profile";
+@import "../../Pages/Register/Register";

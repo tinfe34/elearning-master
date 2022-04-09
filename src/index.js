@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+// eslint-disable-next-line
+// import "swiper/css/bundle";
+import './Assets/scss/main.scss'
+
 //setup Redux , redux thunk
 import {Provider} from 'react-redux'
 import {createStore,applyMiddleware,compose} from 'redux'
 import{rootReducers} from './Redux/Reducers/rootReducers'
 import thunk from 'redux-thunk'
+
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -16,6 +22,8 @@ const store = createStore(
   composeEnhancers(applyMiddleware(thunk))
   );
 //end setup redux,redux-thunk
+
+
 
 ReactDOM.render(
   

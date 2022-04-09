@@ -1,0 +1,55 @@
+html {
+    font-size: $default-rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  body {
+    margin: 0;
+    font-size: $size-default;
+    line-height: 23.4px / $size-default;
+    background: $body-bg;
+    color: $body-txt;
+  
+    &.--freeze {
+      position: relative;
+      height: 100%;
+      overflow: hidden !important;
+  
+  html.ios & {
+    position: fixed;
+    width: 100%;
+  }
+    }
+  }
+  
+  .--add-fixed-border {
+    html[class*='--scroll-'] & {
+      border-right-width: 0;
+      border-right-style: solid;
+      border-right-color: $white-1;
+    }
+  
+    @for $i from 13 through 18 {
+      html.--scroll-#{$i} & {
+        border-right-width: $i * 1px;
+      }
+    }
+  }
+  
+  img {
+    display: block;
+    max-width: 100%;
+  
+    &:not([src]),
+    &[src=''] {
+      display: none;
+    }
+  }
+  
+  a {
+    text-decoration: none;
+    &,
+    &:hover {
+      color: inherit;
+    }
+  }

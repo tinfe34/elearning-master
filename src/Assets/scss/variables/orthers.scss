@@ -1,0 +1,28 @@
+$page-container-padding: 37px;
+
+$BREAKPOINT-SM: 576px;
+$BREAKPOINT-MD: 768px;
+$BREAKPOINT-LG: 992px;
+$BREAKPOINT-XL: 1200px;
+$BREAKPOINT-XXL: 1750px;
+
+$grid-gutter: 32px;
+$grid-half-gutter: 16px;
+
+$contain-xxl: 1644px;
+$contain-xl: 1140px;
+$contain-lg: 960px;
+$contain-md: 720px;
+$contain-sm: 540px;
+
+$grid-xxl: #{$contain-xxl}/12;
+$grid-xl: #{$contain-xl}/12;
+$grid-lg: #{$contain-lg}/12;
+$grid-md: #{$contain-md}/12;
+$grid-sm: #{$contain-sm}/12;
+
+$margin-container-xxl: '(100vw - #{$contain-xxl} + #{$grid-gutter}) / 2 ';
+$margin-container-xl: '(100vw - #{$contain-xl} + #{$grid-gutter}) / 2';
+$margin-container-lg: '(100vw - #{$contain-lg} + #{$grid-gutter}) / 2';
+$margin-container-md: '(100vw - #{$contain-md} + #{$grid-gutter}) / 2';
+$margin-container-sm: '(100vw - #{$contain-sm} + #{$grid-gutter}) / 2';

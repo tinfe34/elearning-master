@@ -1,187 +1,240 @@
-import React, { Component } from 'react'
-import logo from './../../Assets/img/logo.png'
-import { Link, NavLink } from 'react-router-dom'
-import './Header.scss';
-import { connect } from 'react-redux'
-import swal from 'sweetalert';
-import { Button, Menu, MenuItem, TextField } from '@material-ui/core';
+import React, { Component } from "react";
+import logo from "./../../Assets/img/logo.png";
+import { Link, NavLink } from "react-router-dom";
+// import "./Header.scss";
+import { connect } from "react-redux";
+import swal from "sweetalert";
+import { Button, Menu, MenuItem, TextField } from "@material-ui/core";
 
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import { withStyles } from '@material-ui/core/styles';
-import ModalCart from '../ModalCart';
-import { createAction } from '../../Redux/Action/Action';
-import { REMOVE_USER } from '../../Redux/Action/Constans';
-import imgUser from './../../Assets/img/user.jpg'
-
-//material design
-const StyledMenu = withStyles({
-    paper: {
-        border: '1px solid #d3d4d5',
-
-    },
-})((props) => (
-    <Menu
-        elevation={0}
-        getContentAnchorEl={null}
-        anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'center',
-        }}
-        transformOrigin={{
-            vertical: 'top',
-            horizontal: 'center',
-        }}
-        {...props}
-    />
-));
-
-
+import { withStyles } from "@material-ui/core/styles";
+import ModalCart from "../ModalCart";
+import { createAction } from "../../Redux/Action/Action";
+import { REMOVE_USER } from "../../Redux/Action/Constans";
+import imgUser from "./../../Assets/img/user.jpg";
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
 
-    state = {
-        anchorEl: false,
+    this.wrapperRef = React.createRef();
+  }
+
+  state = {
+    anchorEl: false,
+    isOpen: false,
+  };
+
+  handleOutsideClick = (e) => {
+    // ignore clicks on the component itself
+    if (this.wrapperRef && !this.wrapperRef.current.contains(e.target)) {
+      this.setState({
+        isOpen: false,
+      });
     }
 
-    handleClick = (event) => {
+    return;
+  };
 
-        this.setState({
-            anchorEl: event.currentTarget
+  handleClickAvatar = (event) => {
+    this.state.isOpen
+      ? this.setState({
+          isOpen: false,
         })
+      : this.setState({
+          isOpen: true,
+        });
+  };
 
-    };
+  handleClose = () => {
+    this.setState({
+      anchorEl: false,
+    });
+  };
 
-    handleClose = () => {
-        this.setState({
-            anchorEl: false
-        })
+  logOut = () => {
+    localStorage.removeItem("userLogin");
+    swal("Đăng Xuất thành công", "", "success").then((res) => {
+      if (res) {
+      }
+    });
+    this.props.dispatch(createAction(REMOVE_USER, null));
+  };
 
-    };
-    //end material design
+  render() {
+    let { listCart, isLogin, listCourse } = this.props;
 
-    //code chay
-
-    logOut = () => {
-
-        localStorage.removeItem("userLogin");
-        swal("Đăng Xuất thành công", "", "success").then(res => {
-            if (res) {
-            }
-        })
-        this.props.dispatch(createAction(REMOVE_USER, null))
-    }
-    render() {
-
-      
-        let { listCart, isLogin,listCourse} = this.props;
-
-        return (
-            <>
-                <header className="header" id="back-to-top-anchor">
-                    <div className="container-fluid">
-                        <div className="header-top ">
-                            <div className="header-logo">
-                                <Link to="/home"><img src={logo} /></Link>
-                            </div>
-                            <div className="search">
-                                <Autocomplete
-                                    freeSolo
-                                    size="small"
-                                    id="free-solo-2-demo"
-                                    disableClearable
-                                    options={listCourse.map((option) => option.tenKhoaHoc
-                                    )}
-                                    renderInput={(params) => (
-                                        <TextField
-                                            {...params}
-                                            label="Tim Kiem Khoa Hoc"
-                                            margin="normal"
-                                            variant="outlined"
-                                            InputProps={{ ...params.InputProps, type: 'search' }}
-                                        />
-                                    )}
-                                />
-
-                            </div>
-                            <div className="cart">
-
-                                <i className="fa fa-shopping-cart" data-toggle="modal" data-target="#modelCart">
-                                    <span className="cartVal">{listCart.length}</span>
-                                </i>
-
-                            </div>
-                            {/* Kiểm tra isLogin */}
-                            {isLogin ?
-                                <>
-                                    <Button id="simple-menu"  aria-haspopup="true" onClick={this.handleClick} color="primary"  >
-                                        <img className="logoUser" src={imgUser} />
-                                    </Button>
-                                    <StyledMenu
-
-                                        id="simple-menu"
-                                        anchorEl={this.state.anchorEl}
-
-                                        open={Boolean(this.state.anchorEl)}
-                                        onClose={this.handleClose}
-
-                                    >
-
-                                        <MenuItem ><NavLink className="dropdown-item" to="/profile">Xem thông tin</NavLink></MenuItem>
-
-                                        <MenuItem ><NavLink to="/home" onClick={this.logOut} >Đăng Xuất</NavLink></MenuItem>
-                                    </StyledMenu>
-                                </>
-                                : <Button aria-controls="fade-menu" aria-haspopup="true" className="accout ">
-                                    <NavLink to="/login"><i className="fa fa-user-circle"></i></NavLink>
-                                </Button>
-
-
-
-
-                            }
-                        </div>
+    return (
+      <>
+        <header className="site-header" id="back-to-top-anchor">
+          <div className="site-header__wrapper">
+            <div className="site-header__top">
+              <div className="site-header__row">
+                <div className="site-header__top-left">
+                  <ul className="site-header__social">
+                    <li className="topnav-li social-icons-li">
+                      <a className="facebook .hover-linear-text" href="#">
+                        <i className="fa fa-facebook" />
+                      </a>
+                    </li>
+                    <li className="topnav-li social-icons-li">
+                      <a className="youtube" href="#">
+                        <i className="fa fa-play" />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="site-header__top-logo">
+                  <Link to="/home">
+                    <img src={logo} />
+                  </Link>
+                </div>
+                <div className="site-header__top-right">
+                  <div className="site-header__utility">
+                    <div className="site-header__utility-toogle">
+                      <i className="fa fa-bars"></i>
                     </div>
-                    <div className="header-bottom">
-                        <nav className="navbar navbar-expand-md">
-                            <button className="navbar-toggler d-lg-none " type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
-                                <span className="navbar-toggler-icon"><i className="fa fa-bars text-white"></i></span>
-                            </button>
-                            
-                            <div className="collapse navbar-collapse" id="collapsibleNavId">
-                                <ul className="navbar-nav m-auto mt-2 mt-lg-0">
-                                    <li className="nav-item active">
-                                        <NavLink className="nav-link" to="/">TRANG CHỦ <span className="sr-only">(current)</span></NavLink>
-                                    </li>
-                                    <li className="nav-item">
-                                        <NavLink className="nav-link" to="/login">LỘ TRÌNH HỌC</NavLink>
-                                    </li>
-                                    <li className="nav-item">
-                                        <NavLink className="nav-link" to="/">DANH SÁCH KHÓA HỌC</NavLink>
-                                    </li>
-                                    <li className="nav-item">
-                                        <NavLink className="nav-link" to="/">HỌC ONLINE</NavLink>
-                                    </li>
-                                    <li className="nav-item">
-                                        <NavLink className="nav-link" to="/">VỀ CYBERSOFT</NavLink>
-                                    </li>
-                                </ul>
+                    <ul className="site-header__utility-list">
+                      <li className="site-header__utility-item">
+                        <a href="/">
+                          <i className="fa fa-home" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li className="site-header__utility-item">
+                        <a href="https://cybersoft.edu.vn/blog/">BÀI VIẾT</a>
+                      </li>
+                      <li className="site-header__utility-item">
+                        <a target="_blank" href="https://cyberlearn.vn">
+                          HỌC ONLINE CYBERLEARN.VN
+                        </a>
+                      </li>
+                      <li className="site-header__utility-item">
+                        <a href="/lien-he">
+                          <i className="fa fa-envelope" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li className="site-header__utility-item">
+                        <a href="/">
+                          <i className="fa fa-phone" aria-hidden="true"></i>
+                        </a>
+                        <a href="tel:+84961051014" className="hotline">
+                          Hotline: 0961.05.10.14
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="site-header__bottom">
+              <div className="site-header__cart btn-primary">
+                <i
+                  className="fa fa-shopping-cart"
+                  data-toggle="modal"
+                  data-target="#modelCart"
+                ></i>
+                <span className="site-header__cart-val">{listCart.length}</span>
+              </div>
+              <div ref={this.wrapperRef}>
+                {isLogin ? (
+                  <div className="site-header__logged">
+                    <img
+                      onClick={this.handleClickAvatar}
+                      className="site-header__avatar"
+                      src={imgUser}
+                    />
+                    {this.state.isOpen && (
+                      <ul className="site-header__info-list">
+                        <li className="site-header__info-item">
+                          <NavLink to="/profile">Xem thông tin</NavLink>
+                        </li>
+                        <li className="site-header__info-item">
+                          <NavLink to="/home" onClick={this.logOut}>
+                            Đăng Xuất
+                          </NavLink>
+                        </li>
+                      </ul>
+                    )}
+                  </div>
+                ) : (
+                  <NavLink
+                    to="/login"
+                    className="site-header__login btn-primary"
+                  >
+                    Đăng Nhập
+                  </NavLink>
+                )}
+              </div>
+            </div>
+            <div className="site-header__main">
+              <nav className="navbar navbar-expand-md site-header__nav">
+                <button
+                  className="navbar-toggler site-header__nav-toggler d-lg-none "
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapsibleNavId"
+                  aria-controls="collapsibleNavId"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span className="navbar-toggler-icon  site-header__toggler-icon">
+                    <i className="fa fa-bars text-white"></i>
+                  </span>
+                </button>
 
-                            </div>
-                        </nav>
-                    </div>
-                </header>
-                <ModalCart />
-            </>
-        )
-    }
+                <div className="collapse navbar-collapse" id="collapsibleNavId">
+                  <ul className="navbar-nav m-auto mt-2 mt-lg-0">
+                    <li className="site-header__nav-item active">
+                      <NavLink className="nav-link" to="/">
+                        TRANG CHỦ <span className="sr-only">(current)</span>
+                      </NavLink>
+                    </li>
+                    <li className="site-header__nav-item">
+                      <NavLink className="nav-link" to="/">
+                        LỘ TRÌNH HỌC
+                      </NavLink>
+                    </li>
+                    <li className="site-header__nav-item">
+                      <NavLink className="nav-link" to="/">
+                        DANH SÁCH KHÓA HỌC
+                      </NavLink>
+                    </li>
+                    <li className="site-header__nav-item">
+                      <NavLink className="nav-link" to="/">
+                        HỌC ONLINE
+                      </NavLink>
+                    </li>
+                    <li className="site-header__nav-item">
+                      <NavLink className="nav-link" to="/">
+                        VỀ CYBERSOFT
+                      </NavLink>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </header>
+
+        <ModalCart />
+      </>
+    );
+  }
+
+  componentWillMount() {
+    document.body.addEventListener("click", this.handleOutsideClick);
+  }
+
+  componentWillUnmount() {
+    document.body.removeEventListener("click", this.handleOutsideClick);
+  }
 }
 
 const mapStateToProps = (state) => {
-    return {
-        listCart: state.CourseReducer.listToCart,
-        isLogin: state.UserReducer.credential,
-        listCourse : state.CourseReducer.listCourse,
-    }
-}
+  return {
+    listCart: state.CourseReducer.listToCart,
+    isLogin: state.UserReducer.credential,
+    listCourse: state.CourseReducer.listCourse,
+  };
+};
 
-export default connect(mapStateToProps, null)(Header)
+export default connect(mapStateToProps, null)(Header);

@@ -1,63 +1,100 @@
-.courseDetail{
-    .mainTop{
-        h1{
-            color: #3f51b5;
-        }
-        p{
-            text-align: justify;
-            font-size: 20px;
-            font-weight: 400;
-            
-            text-align: justify;
-            
-        }
-        .content{
-            .content_left{
-                h1{
-                    
-                    text-transform: uppercase;
-                }
-                ol{
-                    li{
-                        font-size: 20px;
-                        font-weight: 400;
-                    }
-                }
-                
-                
-            }
-            .content_right{
-                .video{
-                    position: relative;
-                img{
-                    width: 100%;
-                    max-height: 340px;
-                    filter: brightness(0.5);
-                 }
-                 .video_icon{
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    font-size: 70px;
-                    color: #fff;           
-                    transform: translate(-50%, -50%);
-                    cursor: pointer;
-                    
-                }
-                
-                }
-                .time{
-                    p{
-                        text-align: center;
-                    }
-                }
-            }
-        }
+.course-detail {
+  &__main {
+    margin-top: 50px;
+  }
+
+  &__title {
+    text-transform: uppercase;
+    margin: 20px 0;
+  }
+
+  i {
+    margin-right: 7px;
+  }
+
+  &__guide {
+    margin: 20px 0;
+    p {
+      font-weight: bold;
     }
-    .mainBottom{
-        li.nav-item {
-            font-size: 20px;
-            font-weight: bold;
-        }
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
     }
+    li {
+      margin: 5px 0;
+    }
+  }
+  .btn-linear-gradient {
+    margin-right: 20px;
+  }
+  &__summary {
+    p {
+      margin: 10px 0;
+    }
+    font-weight: bold;
+    color: #b72626;
+    font-style: normal;
+    margin: 20px 0;
+  }
+
+  &__video {
+    position: relative;
+    img {
+      width: 100%;
+      height: auto;
+      filter: brightness(0.5);
+      object-fit: cover;
+    }
+    &-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 70px;
+      color: #fff;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+    }
+  }
+
+  &__tag {
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li {
+        display: inline-block;
+        margin: 5px;
+        padding: 5px;
+        background-color: rgb(232, 232, 232);
+      }
+    }
+  }
+
+  &__desc {
+    margin: 50px 0;
+    &-title {
+      font-weight: bold;
+      font-size: 27px;
+    }
+  }
+
+  &__adherence {
+    margin: 50px 0;
+
+    p {
+      font-weight: bold;
+      font-size: 27px;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li {
+        margin: 10px 0;
+      }
+    }
+  }
 }

@@ -49,10 +49,11 @@ export default function BackToTop(props) {
   return (
     <React.Fragment>
       <ScrollTop {...props}>
-        <Fab color="secondary" size="small" aria-label="scroll back to top">
+        <Fab className='btn-primary' size="small" aria-label="scroll back to top">
           <KeyboardArrowUpIcon />
         </Fab>
       </ScrollTop>
     </React.Fragment>
   );
 }
+

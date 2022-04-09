@@ -1,0 +1,234 @@
+// Style Guide
+:root {
+  --body-background-color: #fff;
+  --body-text-color: #000;
+  --breakline-bg-color: #434343;
+  --breakline-height: 1px;
+}
+
+body {
+  min-height: 100vh !important;
+  background-color: var(--body-background-color) !important;
+  font-family: $font-base !important;
+  font-size: rem(16) !important;
+  color: var(--body-text-color) !important;
+}
+
+h1,
+.heading-1 {
+  font-size: rem(30) !important;
+  line-height: rem(50) !important;
+  font-weight: 700;
+  text-transform: capitalize;
+  background-image: linear-gradient(90deg, #4550f8 0%, #fd632f 100%);
+  -webkit-text-fill-color: transparent;
+  transition: 500ms;
+  -webkit-background-clip: text;
+
+  @include mq($BREAKPOINT-LG) {
+    font-size: rem(50) !important;
+    line-height: rem(70) !important;
+  }
+}
+
+h2,
+.heading-2 {
+  font-size: rem(30) !important;
+  line-height: rem(36) !important;
+
+  text-transform: capitalize;
+  background-image: linear-gradient(90deg, #4550f8 0%, #fd632f 100%);
+  -webkit-text-fill-color: transparent;
+  transition: 500ms;
+  -webkit-background-clip: text;
+
+  @include mq($BREAKPOINT-LG) {
+    font-size: rem(36) !important;
+    line-height: rem(43) !important;
+  }
+}
+
+h3,
+.heading-3 {
+  font-size: rem(26) !important;
+  line-height: rem(31) !important;
+  text-transform: capitalize;
+  background-image: linear-gradient(90deg, #4550f8 0%, #fd632f 100%);
+  -webkit-text-fill-color: transparent;
+  transition: 500ms;
+  -webkit-background-clip: text;
+  font-weight: bold;
+
+  @include mq($BREAKPOINT-LG) {
+    font-size: rem(30) !important;
+    line-height: rem(50) !important;
+  }
+}
+
+h4,
+.heading-4 {
+  font-size: rem(24) !important;
+  line-height: rem(29) !important;
+
+  @include mq($BREAKPOINT-LG) {
+    font-size: rem(21) !important;
+    line-height: rem(25) !important;
+  }
+}
+
+h5,
+.heading-5 {
+  font-size: rem(16) !important;
+  line-height: rem(19) !important;
+
+  @include mq($BREAKPOINT-LG) {
+    font-size: rem(18) !important;
+    line-height: rem(22) !important;
+  }
+}
+
+.hover-linear-text {
+  &:hover {
+    background-image: linear-gradient(90deg, #4550f8 0%, #fd632f 100%);
+    -webkit-text-fill-color: transparent;
+    transition: 500ms;
+    -webkit-background-clip: text;
+  }
+}
+
+.form-group {
+  margin: 0 !important;
+  padding-top: rem(10) !important;
+  padding-bottom: rem(10) !important;
+
+  .invalid-feedback {
+    display: block;
+    margin: 0 !important;
+    font-size: rem(18) !important;
+
+    &.\--mg {
+      margin: 0 !important;
+
+      @include mq($BREAKPOINT-LG) {
+        margin: auto !important;
+        margin-top: rem(20) !important;
+      }
+    }
+  }
+}
+.for {
+  &-desktop {
+    display: none !important;
+  }
+
+  &-mobile {
+    display: block !important;
+  }
+}
+
+@include mq($BREAKPOINT-LG) {
+  .for {
+    &-desktop {
+      display: block !important;
+    }
+
+    &-mobile {
+      display: none !important;
+    }
+  }
+}
+
+.btn-primary {
+  padding: 5px 10px;
+  outline: none;
+  border-radius: 3px;
+  border-width: 0;
+  color: $white-1;
+  background: $yellow-1;
+  font-weight: bold;
+  transition: linear 2s;
+  outline: none;
+  box-shadow: 0 0 0 1px #fff, 0 0 0 3px #2b72a54a;
+
+  &:hover {
+    transition: linear 2s;
+    color: $white-1;
+    background: linear-gradient(to right, $yellow-1, $brown-1);
+  }
+}
+
+.btn-outline-primary {
+  padding: 5px 10px;
+  box-shadow: 0 0 0 1px #fff, 0 0 0 3px #2b72a54a;
+  color: $brown-1;
+  font-weight: bold;
+  outline: none;
+  transition: linear 0.5s;
+  border-width: 0;
+
+  &:hover {
+    color: $white-1;
+    outline: none;
+    background: linear-gradient(to right, $yellow-1, $brown-1);
+  }
+}
+
+.btn-linear-gradient {
+  background: linear-gradient(to right, $yellow-1, $brown-1);
+  padding: 5px 10px;
+  box-shadow: 0 0 0 1px #fff, 0 0 0 3px #2b72a54a;
+  color: $white-1;
+  font-weight: bold;
+  outline: none;
+  transition: linear 0.5s;
+  border-width: 0;
+
+  &:hover {
+    color: $white-1;
+    background: linear-gradient(to right, $brown-1, $yellow-1);
+  }
+}
+.swal-button {
+  background-color: $yellow-1;
+
+  &:hover {
+    transition: linear 2s;
+    color: $white-1;
+    background: linear-gradient(to right, $yellow-1, $brown-1);
+  }
+}
+
+.btn-primary:not(:disabled):not(.disabled).active {
+  background: linear-gradient(to right, #cda02e, #5f3f3a);
+}
+
+.review {
+  font-size: 20px;
+  color: $yellow-2;
+}
+
+.makeStyles-root-1 {
+  .MuiFab-root {
+    background-color: #cda02e;
+    color: white;
+    outline: none;
+    box-shadow: 0 0 0 1px #fff, 0 0 0 3px #2b72a54a;
+  }
+
+  z-index: 99999;
+
+  .MuiSvgIcon-root {
+    width: 2em;
+    height: 2em;
+  }
+}
+
+.form-control {
+  padding: 20px;
+  font-size: 16px;
+}
+
+.text-danger {
+  margin-top: 10px;
+  font-weight: 700;
+}

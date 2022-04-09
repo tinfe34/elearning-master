@@ -1,12 +1,14 @@
-.bgLogin{
-    background: linear-gradient(#141e30, #243b55);
-    padding: 50px 0;
-    .content{
-        width: 400px;
-        margin:auto;
-        padding: 40px;
-        background-color: white;
-        border-radius: 15px;
-        box-shadow: 0 15px 25px rgba(0,0,0,.6);
-    }
+.login-page {
+  padding: 100px 0;
+  background-image: url("../../Assets/img/cybersoft-bg3.jpg");
+  background-size: contain;
+
+  &-wrapper {
+    width: 400px;
+    margin: auto;
+    padding: 40px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  }
 }

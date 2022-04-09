@@ -1,7 +1,37 @@
+.slider {
+  position: relative;
 
-.carousel-item{
-    img{
-        max-width: 100%;
-        min-height: 300px;
+  &__skewmask{
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    overflow: hidden;
+    z-index: 1;
+    width: 100%;
+    height: 0;
+    padding-bottom: rem(70);
+    pointer-events: none;
+    
+    &-block {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      top: 0;
+      left: 0;
+      -webkit-transform-origin: 100% 0;
+      transform-origin: 100% 0;
+      -webkit-transform: skewY(-1.6deg);
+      transform: skewY(-1.6deg);
     }
+  }
+}
+
+
+.swiper-pagination-progressbar {
+  background: $grey-1;
+}
+
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+  background:  linear-gradient(to right, $brown-1, $yellow-1,$brown-1);
 }

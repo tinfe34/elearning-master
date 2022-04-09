@@ -1,153 +1,337 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { asyncCourseDetail } from '../../Redux/Action/asyncCourseDetail'
-import './CourseDetail.scss'
-import Axios from 'axios'
-import swal from 'sweetalert'
-import imgUser from './../../Assets/img/user.jpg'
-import logo from './../../Assets/img/logo.png'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { asyncCourseDetail } from "../../Redux/Action/asyncCourseDetail";
+
+import Axios from "axios";
+import swal from "sweetalert";
+import imgUser from "./../../Assets/img/user.jpg";
+import logo from "./../../Assets/img/logo.png";
+import { courseService } from "../../Services";
+
 class CourseDetail extends Component {
-
-    toBuyCourse = (maKH) => {
-        let user = JSON.parse(localStorage.getItem('userLogin'))
-        if (user) {
-            Axios({
-                method: 'POST',
-                url: 'http://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/DangKyKhoaHoc',
-                data: {
-                    "maKhoaHoc": maKH,
-                    "taiKhoan": user.taiKhoan
-                },
-
-            }).then((res) => {
-                swal("Đăng kí  Thành Công!", "", "success")
-            }).catch((err) => {
-                swal("Bạn đã mua khóa học này rồi!", "", "error")
-                // console.log(err)
-            })
-        }
-        else {
-            swal({
-                title: "Vui lòng đăng nhập!",
-                text: '',
-                icon: "warning",
-                button: "OK",
-            });
-
-        }
-        // console.log(err)
+  toBuyCourse = (maKH) => {
+    let user = JSON.parse(localStorage.getItem("userLogin"));
+    if (user) {
+      const params = {
+        maKhoaHoc: maKH,
+        taiKhoan: user.taiKhoan,
+      };
+      courseService
+        .registerCourse(params)
+        .then((res) => {
+          swal("Đăng kí Thành Công!", "", "success");
+        })
+        .catch((err) => {
+          swal("Bạn Đăng kí rồi!", "", "error");
+        });
+    } else {
+      swal({
+        title: "Vui lòng đăng nhập!",
+        text: "",
+        icon: "warning",
+        button: "OK",
+      });
     }
-    render() {
-        let { courseDetail } = this.props;
-        console.log(courseDetail)
-        return (
-            <div className="courseDetail">
-                {/* mainTOP */}
-                <div className="mainTop my-5">
-                    <div className="content">
-                        <div className="container">
-                            <div className="row">
+  };
+  render() {
+    let { courseDetail } = this.props;
+    console.log(courseDetail);
 
-                                <div className="col-12 col-md-6">
-                                    <div className="content_left">
-                                        <h1 className=" my-3">CHUYÊN GIA {courseDetail.tenKhoaHoc}</h1>
-                                        <p >
-                                            <span className='review'> <i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></span>
-                                        </p>
-                                        <p><b>Giảng viên: </b>{courseDetail.nguoiTao.hoTen}</p>
-                                        <p><b>Lượt xem: </b>{courseDetail.luotXem}</p>
-                                        <p><b>Khai giảng: </b>{courseDetail.ngayTao}</p>
-
-
-                                        <button className="btn btn-success p-3 my-3 w-100" onClick={() => this.toBuyCourse(courseDetail.maKhoaHoc)}>ĐĂNG KÝ NGAY</button>
-                                    </div>
-                                </div>
-
-                                <div className="col-12 col-md-6">
-                                    <div className="content_right">
-                                        <div className="video">
-                                            <img src={courseDetail.hinhAnh} /><br />
-                                            <div className="video_icon">
-                                                <i className="fa fa-play-circle" data-toggle="modal" data-target="#courseDetail"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                      {/* <!-- The Modal --> */}
-                            <div class="modal fade" id="courseDetail">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        
-                                    <iframe width="100%" height="400px" src="https://www.youtube.com/embed/0LTO0H2Duuc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                            </div>
-                                </div>
-                            </div>
-                        </div>
+    return (
+      <div className="course-detail">
+        <div className="container">
+          <div className="course-detail__main">
+            <div className="row">
+              <div className="col-12 col-md-7">
+                <div className="course-detail__detail">
+                  <h1 className="course-detail__title">
+                    Chuyên Gia {courseDetail.tenKhoaHoc}
+                  </h1>
+                  <p>
+                    Đã có hơn <b>6200 bạn offline và hơn 2000 bạn online</b> đã
+                    đăng kí học và có việc làm thông qua chương trình đào tạo
+                    Lập trình Front End chuyên nghiệp từ Zero tại CyberSoft &
+                    CyberLearn. Khóa học <b>100% thực hành</b> cường độ cao theo
+                    <b>dự án thực tế</b> và kết nối doanh nghiệp hỗ trợ tìm việc
+                    ngay sau khi học. Phương pháp đào tạo nghề chuẩn đại học
+                    Arizona - ASU Mỹ - tập trung tư duy, phân tích bài toán giúp
+                    cho học viên dễ dàng phát triển từ dev lên senior, leader và
+                    làm việc tại bất kì môi trường nào.
+                  </p>
+                  <div className="course-detail__guide">
+                    <div className="row">
+                      <div className="col-6">
+                        <p>
+                          <i className="fa fa-users" aria-hidden="true"></i>
+                          AI CÓ THỂ THAM GIA ?
+                        </p>
+                        <ul>
+                          <li>
+                            <i className="fa fa-check" aria-hidden="true"></i>
+                            Đã có kiến thức về tư duy lập trình, lập trình hướng
+                            đối tượng
+                          </li>
+                          <li>
+                            <i className="fa fa-check" aria-hidden="true"></i>
+                            Trái ngành học lập trình, chuyển nghề đã biết tư duy
+                            lập trình, lập trình hướng đối tượng
+                          </li>
+                          <li>
+                            <i className="fa fa-check" aria-hidden="true"></i>
+                            Sinh viên học CNTT, Cao Đẳng, Đại học đã biết tư duy
+                            lập trình, lập trình hướng đối tượng
+                          </li>
+                          <li>
+                            <i className="fa fa-check" aria-hidden="true"></i>
+                            Chủ dự án muốn quản lý team dev, startup muốn hiểu
+                            rõ việc làm của dev đã biết tư duy lập trình, lập
+                            trình hướng đối tượng
+                          </li>
+                          <li>
+                            <i className="fa fa-check" aria-hidden="true"></i>
+                            Thêm nghề để kiếm thêm thu nhập ngoài giờ
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="col-6">
+                        <p>
+                          <i
+                            className="fa fa-graduation-cap"
+                            aria-hidden="true"
+                          ></i>
+                          HỌC XONG LÀM VIỆC TẠI ĐÂU ?
+                        </p>
+                        <ul>
+                          <li>
+                            <i className="fa fa-check" aria-hidden="true"></i>
+                            Apply vào tất cả công ty tuyển dụng Front End Dev ở
+                            vị trí fresher hoặc juinor
+                          </li>
+                          <li>
+                            <i className="fa fa-check" aria-hidden="true"></i>
+                            Các công ty outsourcing - gia công phần mềm
+                          </li>
+                          <li>
+                            <i className="fa fa-check" aria-hidden="true"></i>
+                            Các công ty startup - khởi nghiệp
+                          </li>
+                          <li>
+                            <i className="fa fa-check" aria-hidden="true"></i>
+                            Công ty, tập đoàn trong nước và nước ngoài...
+                          </li>
+                          <li>
+                            <i className="fa fa-check" aria-hidden="true"></i>
+                            Có thể apply ngay vào Fresher, Junior với mức lương
+                            khởi điểm từ 8tr đến 15tr
+                          </li>
+                          <li>
+                            <i className="fa fa-check" aria-hidden="true"></i>
+                            Nhận các job freelancer về xây dựng front end cho
+                            website
+                          </li>
+                        </ul>
+                      </div>
                     </div>
-                </div>
-                <div className="mainBottom">
-                    <div className="container">
-                        <div>
-                            <ul className="nav nav-tabs" id="myTab" role="tablist">
-                                <li className="nav-item" role="presentation">
-                                    <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Mô Tả khóa học</a>
-                                </li>
-                                <li className="nav-item" role="presentation">
-                                    <a className="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Cảm nhận học viên </a>
-                                </li>
-
-                            </ul>
-                            <div className="tab-content p-3" id="myTabContent">
-                                <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">{courseDetail.moTa}</div>
-                                <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                    <div className="media p-3">
-                                        <img src={imgUser} alt="John Doe" className="mr-3 mt-3 rounded-circle" style={{ width: 60 }} />
-                                        <div className="media-body">
-                                            <h4>Lê Hữu Tín <small><i>19 tháng 9, 2020</i></small></h4>
-                                            <p>Khóa Học chất lượng tốt mentor hổ trợ nhiệt tình, và hiện mình đang tìm việc </p>
-                                            <div className="media p-3">
-                                                <img src={logo} alt="Jane Doe" className="mr-3 mt-3 rounded-circle" style={{ width: 45 }} />
-                                                <div className="media-body">
-                                                    <h4>Admin <small><i>20 tháng 9, 2020</i></small></h4>
-                                                    <p>Cảm ơn bạn đã quan tâm khóa học , mong bạn sớm tìm được việc làm</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-                        </div>
-
+                  </div>
+                  <div className="course-detail__summary">
+                    <div className="row">
+                      <div className="col-6 col-lg-4">
+                        <p>
+                          <i className="fa fa-clock-o" aria-hidden="true"></i>
+                          HỌC ONLINE VIDEO & MENTOR SUPPORT
+                        </p>
+                      </div>
+                      <div className="col-6 col-lg-4">
+                        <p>
+                          <i className="fa fa-list-alt" aria-hidden="true"></i>
+                          15 CHỦ ĐỀ TỪ NỀN TẢNG ĐẾN CHUYÊN SÂU
+                        </p>
+                      </div>
+                      <div className="col-6 col-lg-4">
+                        <p>
+                          <i className="fa fa-clock-o" aria-hidden="true"></i>{" "}
+                          &gt; 600 VIDEO &amp; 200 GIỜ GIẢNG
+                        </p>
+                      </div>
+                      <div className="col-6 col-lg-4">
+                        <p>
+                          <i
+                            className="fa fa-graduation-cap"
+                            aria-hidden="true"
+                          ></i>
+                          CẤP CHỨNG NHẬN SAU KHÓA HỌC
+                        </p>
+                      </div>
+                      <div className="col-6 col-lg-4">
+                        <p>
+                          <i classname="fa fa-podcast" aria-hidden="true" />
+                          &gt; 70 BÀI TẬP &amp; DỰ ÁN THỰC TẾ
+                        </p>
+                      </div>
+                      <div className="col-6 col-lg-4">
+                        <p>
+                          <i className="fa fa-usd" aria-hidden="true"></i>HD LÀM
+                          CV & KẾT NỐI VIỆC LÀM
+                        </p>
+                      </div>
                     </div>
+                  </div>
+
+                  <p>
+                    <span className="review">
+                      {" "}
+                      <i className="fa fa-star"></i>
+                      <i className="fa fa-star"></i>
+                      <i className="fa fa-star"></i>
+                      <i className="fa fa-star"></i>
+                      <i className="fa fa-star"></i>
+                    </span>
+                  </p>
+                  <p>
+                    <b>Giảng viên: </b>
+                    {courseDetail.nguoiTao.hoTen}
+                  </p>
+                  <p>
+                    <b>Lượt xem: </b>
+                    {courseDetail.luotXem}
+                  </p>
+                  <p>
+                    <b>Khai giảng: </b>
+                    {courseDetail.ngayTao}
+                  </p>
+
+                  <button
+                    className="btn-linear-gradient p-3 my-3"
+                    onClick={() => this.toBuyCourse(courseDetail.maKhoaHoc)}
+                  >
+                    ĐĂNG KÝ ƯU ĐÃI
+                  </button>
+                  <button className="btn-outline-primary p-3 my-3">
+                    ĐỀ CƯƠNG CHI TIẾT
+                  </button>
                 </div>
+              </div>
+
+              <div className="col-12 col-md-5">
+                <div className="course-detail__video">
+                  <img src={courseDetail.hinhAnh} />
+                  <br />
+                  <div className="course-detail__video-icon">
+                    <i
+                      className="fa fa-play-circle"
+                      data-toggle="modal"
+                      data-target="#courseDetail"
+                    ></i>
+                  </div>
+                </div>
+                <div className="course-detail__tag">
+                  <p>
+                    <i className="fa fa-tags" aria-hidden="true"></i>
+                    RẤT NHIỀU DỰ ÁN & CÔNG NGHỆ ĐÁP ỨNG VỊ TRÍ TUYỂN DỤNG
+                    FRONT-END DEV
+                  </p>
+                  <ul>
+                    <li>ReactJS</li>
+                    <li>Angular</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>FLexGrid</li>
+                    <li>Bootstrap</li>
+                    <li>Javascript</li>
+                    <li>Prototype</li>
+                    <li>Ajax</li>
+                    <li>JSON</li>
+                  </ul>
+                </div>
+                {/* <!-- The Modal --> */}
+                <div className="modal fade" id="courseDetail">
+                  <div className="modal-dialog">
+                    <div className="modal-content">
+                      <iframe
+                        width="100%"
+                        height="400px"
+                        src="https://www.youtube.com/embed/0LTO0H2Duuc"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                      ></iframe>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+          <div className="course-detail__desc">
+            <p className="course-detail__desc-title">
+              <i className="fa fa-briefcase" aria-hidden="true"></i>THÔNG TIN
+              KHÓA HỌC
+            </p>
+            <p> {courseDetail.moTa}</p>
+          </div>
+          <div className="course-detail__adherence">
+            <div className="row">
+              <div className="col-12 col-lg-5">
+                <img
+                  className="image-boxes-img img-responsive "
+                  src="https://cyberlearn.vn/wp-content/uploads/2019/10/illustration-e1d13505283e080ef19f77dc7566e00a.png"
+                  alt=""
+                  title="illustration-e1d13505283e080ef19f77dc7566e00a"
+                />
+              </div>
+              <div className="col-12 col-lg-7">
+                <p>
+                  <i className="fa fa-user-md" aria-hidden="true"></i>ĐỐI TƯỢNG
+                  THAM GIA
+                </p>
+                <ul>
+                  <li>
+                    <i className="fa fa-check" aria-hidden="true"></i>
+                    Bạn đang là sinh viên Cao Đẳng hoặc Đại học CNTT muốn học
+                    nhanh theo dự án để thực tập sớm, tìm việc làm sớm, có kinh
+                    nghiệm chinh chiến dự án thực tế sớm
+                  </li>
+                  <li>
+                    <i className="fa fa-check" aria-hidden="true"></i>
+                    Bạn là người đi làm trái nghề nhưng yêu thích CNTT và muốn
+                    theo đuổi nó từ đầu và muốn tăng thu nhập, chuyển ngành có
+                    thu nhập và việc làm luôn top đầu bất chấp dịch bệnh
+                  </li>
+                  <li>
+                    <i className="fa fa-check" aria-hidden="true"></i>
+                    Bạn là sinh viên IT, Tester, Điện tử, Cơ điện tử, Kinh tế,
+                    Ngân hàng, ... mong muốn chuyển nghề
+                  </li>
+                  <li>
+                    <i className="fa fa-check" aria-hidden="true"></i>
+                    Bạn đam mê CNTT từ trước nhưng chưa có cơ hội học và đây là
+                    thời điểm bạn mong muốn được tham gia lại từ đầu.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
-        )
-    }
-
-    componentDidMount() {
-
-        this.props.dispatch(asyncCourseDetail(this.props.match.params.id))
-    }
+  componentDidMount() {
+    this.props.dispatch(asyncCourseDetail(this.props.match.params.id));
+  }
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state.CourseReducer.courseDetail)
-    return {
-        courseDetail: state.CourseReducer.courseDetail || {
-            hinhAnh: "",
-            nguoiTao: [
-                {
-                    hoTen: ''
-                }
-            ]
-        }
-    }
-}
+  // console.log(state.CourseReducer.courseDetail)
+  return {
+    courseDetail: state.CourseReducer.courseDetail || {
+      hinhAnh: "",
+      nguoiTao: [
+        {
+          hoTen: "",
+        },
+      ],
+    },
+  };
+};
 
-export default connect(mapStateToProps)(CourseDetail)
-
+export default connect(mapStateToProps)(CourseDetail);

@@ -1,13 +1,11 @@
-.card{
-    border-radius: 15px;    
-    border: 0px;
-    filter: drop-shadow(2px 4px 6px rgba(255, 192, 203, 0.39));
-    
- 
-}
+.card {
+  width: 100%;
+  height: auto;
+  border-radius: rem(15);
+  border: 0px;
+  filter: drop-shadow(2px 4px 6px rgba(255, 192, 203, 0.39));
 
-.review{
-    font-size: 20px;
-    color: #ffcc00;
+  .card-title {
+    font-weight: bold;
+  }
 }
-

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import './Footer.scss'
+
 import BackToTop from '../BackToTop/BackToTop'
 export default class Footer extends Component {
     render() {

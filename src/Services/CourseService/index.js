@@ -1,18 +1,40 @@
 import Axios from "axios";
-//Nâng cấp axios
+import {
+  API_GET_COURSE,
+  API_GET_COURSE_DETAIL,
+  API_REGISTER_COURSE,
+} from "../Constants/endpoints";
+
 class CourseService {
-    FechCourse(){
-        return  Axios({
-            method:"GET",
-            url:"http://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01"
-        })
-    };
-    FechCourseDetail(courseId){
-        return Axios({
-             method: "GET",
-             url: `http://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${courseId}`,
-         })
-     }
+  fechCourse() {
+    return Axios({
+      method: "GET",
+      url: `${API_GET_COURSE}?MaNhom=GP01`,
+    });
+  }
+
+  fechCourseDetail(courseId) {
+    return Axios({
+      method: "GET",
+      url: `${API_GET_COURSE_DETAIL}?maKhoaHoc=${courseId}`,
+    });
+  }
+
+  fechCourseDetail(courseId) {
+    return Axios({
+      method: "GET",
+      url: `${API_GET_COURSE_DETAIL}?maKhoaHoc=${courseId}`,
+    });
+  }
+
+  registerCourse(params) {
+    return Axios({
+      method: "POST",
+      url: API_REGISTER_COURSE,
+      data: params,
+    })
+  }
+  
 }
 
 export default CourseService;
