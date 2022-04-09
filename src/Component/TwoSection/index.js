@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import imgOnline from "./../../Assets/img/online.png";
 
-
 export default class TwoSection extends Component {
   render() {
     return (
@@ -13,7 +12,9 @@ export default class TwoSection extends Component {
                 <img src={imgOnline} />
               </div>
               <div className="col-12 col-lg-6">
-                <h3 className="two-section__title my-5">Học Online tại CyberLearn.vn</h3>
+                <h3 className="two-section__title my-5">
+                  Học Online tại CyberLearn.vn
+                </h3>
                 <p className="two-section__desc">
                   Hơn 92% trên hơn 3000 học viên học tại CyberSoft học theo lộ
                   trình và có việc làm tốt. CyberSoft đã triển khai chương trình

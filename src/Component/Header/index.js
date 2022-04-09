@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import logo from "./../../Assets/img/logo.png";
+import imgUser from "./../../Assets/img/user.jpg";
+
 import { Link, NavLink } from "react-router-dom";
-// import "./Header.scss";
 import { connect } from "react-redux";
 import swal from "sweetalert";
-import { Button, Menu, MenuItem, TextField } from "@material-ui/core";
 
-import { withStyles } from "@material-ui/core/styles";
 import ModalCart from "../ModalCart";
 import { createAction } from "../../Redux/Action/Action";
 import { REMOVE_USER } from "../../Redux/Action/Constans";
-import imgUser from "./../../Assets/img/user.jpg";
+
 
 class Header extends Component {
   constructor(props) {
@@ -25,7 +24,6 @@ class Header extends Component {
   };
 
   handleOutsideClick = (e) => {
-    // ignore clicks on the component itself
     if (this.wrapperRef && !this.wrapperRef.current.contains(e.target)) {
       this.setState({
         isOpen: false,

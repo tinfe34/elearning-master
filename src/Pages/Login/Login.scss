@@ -1,14 +1,14 @@
 .login-page {
-  padding: 100px 0;
+  padding: rem(100) 0;
   background-image: url("../../Assets/img/cybersoft-bg3.jpg");
   background-size: contain;
 
   &-wrapper {
-    width: 400px;
+    width: rem(400);
     margin: auto;
-    padding: 40px;
+    padding: rem(40);
     background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+    border-radius: rem(15);
+    box-shadow: 0 rem(15) rem(25) rgba(0, 0, 0, 0.6);
   }
 }

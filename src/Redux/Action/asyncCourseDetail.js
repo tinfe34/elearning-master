@@ -8,7 +8,6 @@ export const asyncCourseDetail = (id) => {
     courseService
       .fechCourseDetail(id)
       .then((res) => {
-        // console.log(res)
         dispatch(createAction(FETCH_COURSE_DETAIL, res.data));
       })
       .catch((err) => {

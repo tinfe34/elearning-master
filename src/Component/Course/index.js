@@ -4,9 +4,6 @@ import { connect } from "react-redux";
 import { createAction } from "../../Redux/Action/Action";
 import { ADD_TO_CART } from "../../Redux/Action/Constans";
 import swal from "sweetalert";
-import Button from "@material-ui/core/Button";
-
-
 class Course extends Component {
   state = {
     isCheck: false,
@@ -14,11 +11,13 @@ class Course extends Component {
 
   addToCart = (course) => {
     this.props.dispatch(createAction(ADD_TO_CART, course));
+    
     swal("Thêm sản phẩm thành công!!!", "", "success");
     this.setState({
       isCheck: true,
     });
   };
+
   render() {
     let { course } = this.props;
 

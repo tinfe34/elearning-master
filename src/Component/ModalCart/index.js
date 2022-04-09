@@ -4,14 +4,16 @@ import { connect } from "react-redux";
 import { createAction } from "../../Redux/Action/Action";
 import { REMOVE_TO_CART } from "../../Redux/Action/Constans";
 import swal from "sweetalert";
-import { browserHistory, Redirect } from "react-router";
 
 class ModalCart extends Component {
+
   removeToCart = (masp) => {
     this.props.dispatch(createAction(REMOVE_TO_CART, masp));
   };
+
   chekoutToCart = () => {
     let userLogin = JSON.parse(localStorage.getItem("userLogin"));
+
     if (userLogin) {
       swal("Thanh Toán Thành Công!", "", "success").then((res) => {
         window.location.reload();
@@ -67,7 +69,7 @@ class ModalCart extends Component {
               <h3 className="float-right text-success">
                 Tổng Tiền:{" "}
                 {arrayCourseCart
-                  .reduce((tt, sp, index) => {
+                  .reduce((tt, sp) => {
                     return (tt = tt + parseFloat(sp.giaBan));
                   }, 0)
                   .toString()
@@ -79,6 +81,7 @@ class ModalCart extends Component {
       </table>
     );
   };
+  
   render() {
     let { arrayCourseCart } = this.props;
 

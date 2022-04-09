@@ -11,11 +11,13 @@ import { courseService } from "../../Services";
 class CourseDetail extends Component {
   toBuyCourse = (maKH) => {
     let user = JSON.parse(localStorage.getItem("userLogin"));
+
     if (user) {
       const params = {
         maKhoaHoc: maKH,
         taiKhoan: user.taiKhoan,
       };
+
       courseService
         .registerCourse(params)
         .then((res) => {
@@ -321,7 +323,6 @@ class CourseDetail extends Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log(state.CourseReducer.courseDetail)
   return {
     courseDetail: state.CourseReducer.courseDetail || {
       hinhAnh: "",

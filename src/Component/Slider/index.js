@@ -1,4 +1,5 @@
 import React from "react";
+
 import SwiperCore, {
   Pagination,
   EffectCoverflow,
@@ -42,6 +43,7 @@ export default function Slider() {
         </SwiperSlide>
         <div className="swiper-pagination"></div>
       </Swiper>
+
       <div className="slider__skewmask">
         <div className="slider__skewmask-block"></div>
       </div>

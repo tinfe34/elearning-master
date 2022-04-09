@@ -8,8 +8,6 @@ import swal from "sweetalert";
 import { Formik, Field, FastField, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-
-
 const LoginSchema = Yup.object().shape({
   taiKhoan: Yup.string().required("*Tài khoản không được để trống"),
   matKhau: Yup.string().required("*Mật Khẩu không được để trống"),
@@ -21,12 +19,14 @@ class Login extends Component {
       .signIn(values)
       .then((res) => {
         localStorage.setItem("userLogin", JSON.stringify(res.data));
+
         this.props.dispatch(createAction(USER, res.data));
-        swal("Đăng nhập thành công", "", "success")
+        
+        swal("Đăng nhập thành công", "", "success");
         this.props.history.replace("/home");
       })
       .catch((err) => {
-        swal("Tài khoản hoặc mật khẩu không hợp lệ", "", "error")
+        swal("Tài khoản hoặc mật khẩu không hợp lệ", "", "error");
       });
   };
 
@@ -81,9 +81,7 @@ class Login extends Component {
                   />
                 </div>
 
-                <NavLink to="/register">
-                  Đăng kí tài khoản
-                </NavLink>
+                <NavLink to="/register">Đăng kí tài khoản</NavLink>
               </Form>
             )}
           </Formik>

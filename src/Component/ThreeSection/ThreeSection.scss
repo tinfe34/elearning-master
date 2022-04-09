@@ -7,18 +7,18 @@
     }
 
     &-icon {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        font-size: rem(70);
-        color: $grey-1;
-        transform: translate(-50%, -50%);
-        cursor: pointer;
-  
-        &:hover {
-          color: white;
-        }
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: rem(70);
+      color: $grey-1;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+
+      &:hover {
+        color: white;
       }
+    }
   }
 
   &__contact {

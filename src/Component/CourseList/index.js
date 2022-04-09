@@ -7,9 +7,9 @@ import ModalCart from "../ModalCart";
 
 import SwiperCore, { Pagination, Autoplay, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-// import 'swiper/swiper-bundle.css';
+
 import "swiper/swiper.scss";
-import 'swiper/components/navigation/navigation.scss'; //  Up and down arrow style
+import 'swiper/components/navigation/navigation.scss';
 import "swiper/components/pagination/pagination.scss";
 
 SwiperCore.use([Pagination, Autoplay,Navigation]);
@@ -40,6 +40,7 @@ const params = {
 };
 
 class CourseList extends Component {
+
   renderCourse = () => {
     return this.props.listCourse.map((course, index) => {
       return (
@@ -49,6 +50,7 @@ class CourseList extends Component {
       );
     });
   };
+
   render() {
     return (
       <section className="courses-slider">
@@ -86,9 +88,11 @@ class CourseList extends Component {
     this.props.dispatch(asyncFechCourse());
   }
 }
+
 const mapStateToProps = (state) => {
   return {
     listCourse: state.CourseReducer.listCourse,
   };
 };
+
 export default connect(mapStateToProps)(CourseList);

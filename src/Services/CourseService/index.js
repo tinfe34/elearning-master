@@ -32,9 +32,8 @@ class CourseService {
       method: "POST",
       url: API_REGISTER_COURSE,
       data: params,
-    })
+    });
   }
-  
 }
 
 export default CourseService;

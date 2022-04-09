@@ -16,8 +16,6 @@ class Profile extends Component {
     };
   }
   removeKhoaHoc = (maKH, username) => {
-    // console.log(maKH, username)
-
     Axios({
       method: "POST",
       url: "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/HuyGhiDanh",
@@ -39,6 +37,7 @@ class Profile extends Component {
             chiTietKhoaHocGhiDanh: courseListFilter,
           })
         );
+
         swal("Hủy Đăng kí thành công", "", "success");
       })
       .catch((err) => {
@@ -137,6 +136,7 @@ class Profile extends Component {
       });
   }
 }
+
 const mapStateToProps = (state) => {
   return {
     getProfile: state.UserReducer.profile || {
@@ -152,4 +152,5 @@ const mapStateToProps = (state) => {
     },
   };
 };
+
 export default connect(mapStateToProps)(Profile);

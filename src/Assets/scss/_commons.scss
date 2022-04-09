@@ -139,7 +139,7 @@ h5,
 }
 
 .btn-primary {
-  padding: 5px 10px;
+  padding: rem(5) rem(10);
   outline: none;
   border-radius: 3px;
   border-width: 0;
@@ -158,7 +158,7 @@ h5,
 }
 
 .btn-outline-primary {
-  padding: 5px 10px;
+  padding: rem(5) rem(10);
   box-shadow: 0 0 0 1px #fff, 0 0 0 3px #2b72a54a;
   color: $brown-1;
   font-weight: bold;
@@ -175,8 +175,8 @@ h5,
 
 .btn-linear-gradient {
   background: linear-gradient(to right, $yellow-1, $brown-1);
-  padding: 5px 10px;
-  box-shadow: 0 0 0 1px #fff, 0 0 0 3px #2b72a54a;
+  padding: rem(5) rem(10);
+  box-shadow: 0 0 0 1px #fff, 0 0 0 3px $blue-1;
   color: $white-1;
   font-weight: bold;
   outline: none;
@@ -188,6 +188,7 @@ h5,
     background: linear-gradient(to right, $brown-1, $yellow-1);
   }
 }
+
 .swal-button {
   background-color: $yellow-1;
 
@@ -230,5 +231,5 @@ h5,
 
 .text-danger {
   margin-top: 10px;
-  font-weight: 700;
+  font-weight: 500;
 }
