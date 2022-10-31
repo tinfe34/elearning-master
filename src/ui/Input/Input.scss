@@ -1,0 +1,52 @@
+.x-input {
+  margin-top: 10px;
+  
+  .form-label{
+    color:#000000;
+    font-size:15px;
+    line-height:15px;
+  }
+  
+  .append{
+    position:absolute;
+    right:20px;
+    bottom:10px;
+  }
+
+  .form-control, .form-control:focus{
+    font-size: 15px;
+    color:#000000;
+    &::placeholder {
+    
+    color: #939393;
+    
+    }
+    
+    &.is-invalid,
+    &.is-invalid:focus{
+      background-image:none;
+      color:#d53232;
+      border-color:#d53232;
+      background-color:#fffafa;
+    }
+  }
+
+  .input-meta {
+      display:flex;
+      align-items:center;
+      font-size: 15px;
+      padding-top: 5px;
+
+      .input-bottom-left {
+        flex-grow:1;
+      }
+
+      .input-error{
+        color: #d53232;
+      }
+
+      .input-counter{
+        color: #afafaf;
+      }
+  }
+}

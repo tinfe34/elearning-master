@@ -1,40 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
 
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+//Loading
+import { LoaderProvider } from "./context/LoaderContext";
 
-// eslint-disable-next-line
-// import "swiper/css/bundle";
-import './Assets/scss/main.scss'
+import "./assets/scss/main.scss";
+//store
+import { Provider } from "react-redux";
+import store from "./store";
 
-//setup Redux , redux thunk
-import {Provider} from 'react-redux'
-import {createStore,applyMiddleware,compose} from 'redux'
-import{rootReducers} from './Redux/Reducers/rootReducers'
-import thunk from 'redux-thunk'
-
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-const store = createStore(
-  rootReducers,
-  composeEnhancers(applyMiddleware(thunk))
-  );
-//end setup redux,redux-thunk
-
-
-
-ReactDOM.render(
-  
-    <Provider store={store}>
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <Provider store={store}>
+    <LoaderProvider>
       <App />
-    </Provider>
-  ,
-  document.getElementById('root')
+    </LoaderProvider>
+  </Provider>
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();

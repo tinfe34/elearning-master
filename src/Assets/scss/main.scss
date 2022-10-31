@@ -1,24 +1,35 @@
-@import 'font-face';
-@import 'variables/all';
-@import 'functions';
-@import 'mixins';
-@import 'layouts';
-@import 'commons';
+@import "font-face";
+@import "variables/all";
+@import "functions";
+@import "mixins";
+@import "layouts";
+@import "commons";
 
-//COMPONENTS
-@import "../../Component/Header/Header";
-@import "../../Component/Footer/Footer";
-@import "../../Component/Slider/Slider";
-@import "../../Component/CourseList/CourseList";
-@import "../../Component/Course/Course";
-@import "../../Component/ModalCart/ModalCart";
-@import "../../Component/OneSection/OneSection";
-@import "../../Component/ThreeSection/ThreeSection";
-@import "../../Component/TwoSection/TwoSection";
+//Lib
+@import "~antd/dist/antd.css";
 
-//PAGES
-@import "../../Pages/CourseDetail/CourseDetail";
-@import "../../Pages/CourseDetail/CourseDetail";
-@import "../../Pages/Login/Login";
-@import "../../Pages/Profile/Profile";
-@import "../../Pages/Register/Register";
+//Ui
+@import "../../ui/Box/Box.scss";
+@import "../../ui/Banner/Banner.scss";
+@import "../../ui/Input/Input.scss";
+@import "../../ui/Button/Button.scss";
+
+//Layout
+@import "../../layout/BackToTop/BackToTop.scss";
+
+//Components
+@import "../../layout/Header/Header";
+@import "../../layout/Footer/Footer";
+@import "../../components/HeroBanner/HeroBanner";
+@import "../../components/CourseList/CourseList";
+@import "../../components/Course/Course";
+@import "../../components/PromoBanner/PromoBanner";
+@import "../../components/GraduateVideo/GraduateVideo";
+@import "../../components/VideoBanner/VideoBanner";
+@import "../../components/Loader/Loader";
+
+//Pages
+@import "../../pages/CourseDetail/CourseDetail";
+@import "../../pages/CourseDetail/CourseDetail";
+@import "../../pages/Profile/Profile";
+@import "../../pages/Register/Register";

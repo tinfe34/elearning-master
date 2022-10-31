@@ -1,0 +1,54 @@
+.video-banner {
+  .video-iframe {
+    overflow: hidden;
+
+    height: 100vh;
+    z-index: 1;
+    cursor: pointer;
+
+    @include mq($BREAKPOINT-LG) {
+      height: auto;
+    }
+
+    &__wrap {
+      margin-top: -22%;
+      margin-bottom: -10%;
+      width: 160%;
+
+      position: relative;
+      overflow: hidden;
+      left: 50%;
+      transform: translateX(-50%);
+
+      @include mq($BREAKPOINT-LG) {
+        width: auto;
+        margin-top: -50%;
+        margin-bottom: -20%;
+      }
+    }
+
+    &__inner {
+      position: relative;
+      overflow: hidden;
+      padding-top: 149vh;
+
+			@include mq($BREAKPOINT-LG) {
+				padding-top: 125%;
+			}
+
+      iframe {
+        width: 250%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+
+				@include mq($BREAKPOINT-LG) {
+					width: 100%;
+					height: 125%;
+				}
+      }
+    }
+  }
+}

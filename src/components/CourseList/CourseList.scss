@@ -1,0 +1,73 @@
+.course-slider {
+  position: relative;
+  overflow: hidden;
+  padding: 50px 0;
+  background-image: url(https://cybersoft.edu.vn/wp-content/uploads/2020/04/funfact_bg.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: scroll;
+
+  .swiper-container {
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .swiper-slide {
+    font-size: rem(18);
+    background: $white-1;
+    height: auto;
+
+    /* Center slide text vertically */
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    height: rem(30);
+    width: rem(30);
+    border-radius: 100%;
+    border: 1px solid #6a6f73;
+    background-color: $grey-2;
+    color: $white-1;
+    z-index: 9999;
+    &::after {
+      font-size: 15px;
+    }
+
+    @include mq($BREAKPOINT-MD) {
+      height: rem(50);
+      width: rem(50);
+    }
+  }
+
+  .swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    @include mq($BREAKPOINT-MD) {
+      transform: translate(-100%, -50%);
+    }
+  }
+
+  .swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translate(50%, -50%);
+
+    @include mq($BREAKPOINT-MD) {
+      transform: translate(100%, -50%);
+    }
+  }
+}

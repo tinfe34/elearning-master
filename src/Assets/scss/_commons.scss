@@ -19,9 +19,6 @@ h1,
   font-size: rem(30) !important;
   line-height: rem(50) !important;
   font-weight: 700;
-  text-transform: capitalize;
-  background-image: linear-gradient(90deg, #4550f8 0%, #fd632f 100%);
-  -webkit-text-fill-color: transparent;
   transition: 500ms;
   -webkit-background-clip: text;
 
@@ -33,12 +30,8 @@ h1,
 
 h2,
 .heading-2 {
-  font-size: rem(30) !important;
+  font-size: rem(35) !important;
   line-height: rem(36) !important;
-
-  text-transform: capitalize;
-  background-image: linear-gradient(90deg, #4550f8 0%, #fd632f 100%);
-  -webkit-text-fill-color: transparent;
   transition: 500ms;
   -webkit-background-clip: text;
 
@@ -52,9 +45,6 @@ h3,
 .heading-3 {
   font-size: rem(26) !important;
   line-height: rem(31) !important;
-  text-transform: capitalize;
-  background-image: linear-gradient(90deg, #4550f8 0%, #fd632f 100%);
-  -webkit-text-fill-color: transparent;
   transition: 500ms;
   -webkit-background-clip: text;
   font-weight: bold;
@@ -87,6 +77,7 @@ h5,
   }
 }
 
+//Button
 .hover-linear-text {
   &:hover {
     background-image: linear-gradient(90deg, #4550f8 0%, #fd632f 100%);
@@ -116,15 +107,6 @@ h5,
     }
   }
 }
-.for {
-  &-desktop {
-    display: none !important;
-  }
-
-  &-mobile {
-    display: block !important;
-  }
-}
 
 @include mq($BREAKPOINT-LG) {
   .for {
@@ -138,98 +120,7 @@ h5,
   }
 }
 
-.btn-primary {
-  padding: rem(5) rem(10);
-  outline: none;
-  border-radius: 3px;
-  border-width: 0;
-  color: $white-1;
-  background: $yellow-1;
-  font-weight: bold;
-  transition: linear 2s;
-  outline: none;
-  box-shadow: 0 0 0 1px #fff, 0 0 0 3px #2b72a54a;
-
-  &:hover {
-    transition: linear 2s;
-    color: $white-1;
-    background: linear-gradient(to right, $yellow-1, $brown-1);
-  }
-}
-
-.btn-outline-primary {
-  padding: rem(5) rem(10);
-  box-shadow: 0 0 0 1px #fff, 0 0 0 3px #2b72a54a;
-  color: $brown-1;
-  font-weight: bold;
-  outline: none;
-  transition: linear 0.5s;
-  border-width: 0;
-
-  &:hover {
-    color: $white-1;
-    outline: none;
-    background: linear-gradient(to right, $yellow-1, $brown-1);
-  }
-}
-
-.btn-linear-gradient {
-  background: linear-gradient(to right, $yellow-1, $brown-1);
-  padding: rem(5) rem(10);
-  box-shadow: 0 0 0 1px #fff, 0 0 0 3px $blue-1;
-  color: $white-1;
-  font-weight: bold;
-  outline: none;
-  transition: linear 0.5s;
-  border-width: 0;
-
-  &:hover {
-    color: $white-1;
-    background: linear-gradient(to right, $brown-1, $yellow-1);
-  }
-}
-
-.swal-button {
-  background-color: $yellow-1;
-
-  &:hover {
-    transition: linear 2s;
-    color: $white-1;
-    background: linear-gradient(to right, $yellow-1, $brown-1);
-  }
-}
 
 .btn-primary:not(:disabled):not(.disabled).active {
   background: linear-gradient(to right, #cda02e, #5f3f3a);
-}
-
-.review {
-  font-size: 20px;
-  color: $yellow-2;
-}
-
-.makeStyles-root-1 {
-  .MuiFab-root {
-    background-color: #cda02e;
-    color: white;
-    outline: none;
-    box-shadow: 0 0 0 1px #fff, 0 0 0 3px #2b72a54a;
-  }
-
-  z-index: 99999;
-
-  .MuiSvgIcon-root {
-    width: 2em;
-    height: 2em;
-  }
-}
-
-.form-control {
-  padding: 20px;
-  font-size: 16px;
-}
-
-.text-danger {
-  margin-top: 10px;
-  font-weight: 500;
 }

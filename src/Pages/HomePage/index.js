@@ -1,24 +1,25 @@
-import React, { Component } from "react";
-import Slider from "../../Component/Slider";
-import CourseList from "../../Component/CourseList";
-import OneSection from "../../Component/OneSection";
-import TwoSection from "../../Component/TwoSection";
-import ThreeSection from "../../Component/ThreeSection";
+import React, { Component, Fragment } from "react";
+import CourseList from "../../components/CourseList";
+import PromoBanner from "../../components/PromoBanner";
 
-export default class HomePage extends Component {
-  render() {
-    return (
-      <div>
-        <Slider />
+//
+import HeroBanner from "../../components/HeroBanner";
+import GraduateVideo from "../../components/GraduateVideo";
+import VideoBanner from "../../components/VideoBanner/VideoBanner";
 
-        <OneSection />
+const HomePage = () => {
+  return (
+    <Fragment>
+      <PromoBanner />
+      <CourseList />
+      {/* <HeroBanner /> */}
 
-        <CourseList />
+      {/* <PromoBanner /> */}
 
-        <TwoSection />
+      {/* <VideoBanner /> */}
 
-        <ThreeSection />
-      </div>
-    );
-  }
-}
+      {/* <GraduateVideo /> */}
+    </Fragment>
+  );
+};
+export default HomePage;

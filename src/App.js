@@ -1,61 +1,42 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, Suspense } from "react";
+import { BrowserRouter, Switch } from "react-router-dom";
 
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Profile from "./Pages/Profile";
+//Components
+import { HomeTemplate } from "./templates/HomeTemplate";
 
-import HomePage from "./Pages/HomePage";
-import Register from "./Pages/Register";
-import { HomeTemplate } from "./Templates/HomeTemplate";
-import { AdminTemplate } from "./Templates/AdminTemplate";
-import AdminPage from "./Pages/AdminPage";
-import CourseDetail from "./Pages/CourseDetail";
-import Login from "./Pages/Login";
-import { createAction } from "./Redux/Action/Action";
-import { USER, LOCAL_CART } from "./Redux/Action/Constans";
-import { connect } from "react-redux";
-import Axios from "axios";
+//Store
+import { USER_LOGGED } from "./store/modules/Auth"
+import { LOCAL_CART } from "./store/modules/Course"
+import { useDispatch } from "react-redux";
 
-class App extends Component {
-  render() {
-    return (
-      <BrowserRouter>
+//Route
+import routes from "./routes";
+
+
+const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(()=> {
+    const userLogged = JSON.parse(localStorage.getItem("user_logged"));
+    const cartItem = JSON.parse(localStorage.getItem("cart_item"));
+
+    !!userLogged && dispatch(USER_LOGGED(userLogged));
+    !!cartItem.length && dispatch(LOCAL_CART(cartItem));
+  }, [])
+
+  return (
+    <BrowserRouter>
+      <Suspense>
         <Switch>
-          <HomeTemplate
-            exact
-            path="/courseDetail/:id"
-            Component={CourseDetail}
-          />
-          <HomeTemplate exact path="/profile" Component={Profile} />
-          <HomeTemplate exact path="/login" Component={Login} />
-          <HomeTemplate exact path="/register" Component={Register} />
-          <HomeTemplate exact path="profile" Component={Profile} />
-          <HomeTemplate exact path="/home" Component={HomePage} />
-          <HomeTemplate exact path="/" Component={HomePage} />
-          <AdminTemplate exact path="/admin" Component={AdminPage} />
+          {routes.map((route, index) => {
+            if (route.guard) {
+              return;
+            }
+            return <HomeTemplate key={index} {...route} />;
+          })}
         </Switch>
-      </BrowserRouter>
-    );
-  }
-
-  componentDidMount() {
-    const isLogin = JSON.parse(localStorage.getItem("userLogin"));
-    const isCart = JSON.parse(localStorage.getItem("cart"));
-
-    //Sending the bearer token with axios
-    if (isLogin) {
-      Axios.defaults.headers.common = {
-        Authorization: `Bearer ${isLogin.accessToken}`,
-      };
-    }
-
-    if (isLogin !== null) {
-      this.props.dispatch(createAction(USER, isLogin));
-    }
-
-    if (isCart !== null) {
-      this.props.dispatch(createAction(LOCAL_CART, isCart));
-    }
-  }
-}
-
-export default connect()(App);
+      </Suspense>
+    </BrowserRouter>
+  );
+};
+export default App;

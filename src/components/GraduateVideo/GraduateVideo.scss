@@ -1,0 +1,33 @@
+.graduate {
+  &__video {
+    position: relative;
+
+    img {
+      filter: brightness(0.5);
+    }
+
+    &-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: rem(70);
+      color: $grey-1;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+
+  &__contact {
+    background-color: $grey-2;
+    padding: rem(50) 0;
+
+    form {
+      background-color: $white-1;
+      padding: rem(50);
+    }
+  }
+}

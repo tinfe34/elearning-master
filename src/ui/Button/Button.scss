@@ -1,0 +1,80 @@
+button.btn {
+  font-size: 16px;
+  padding: 13px 20px;
+  cursor: pointer;
+  border: none;
+
+  &.btn-primary {
+    background-size: 250% auto;
+    background-image: linear-gradient(
+      to left,
+      #227df9 0%,
+      #7462f9 25%,
+      #df3ef8 50%,
+      #7462f9 75%,
+      #227df9 100%
+    );
+    transition: all 0.5s ease;
+    transition-timing-function: ease, ease;
+
+
+    &:hover {
+      background-position: right center;
+    }
+  }
+
+  &.btn-outline-primary {
+    color: #000;
+    border: none !important;
+    position: relative;
+    transition: all 0.5s ease;
+    background-image: linear-gradient(90deg, #2d7af9 30%, #a752f8 80%);
+    overflow: hidden;
+    
+    &::before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      right: 2px;
+      bottom: 2px;
+      background-color: #fff;
+    }
+
+    &::after {
+      transition: all 0.5s ease;
+      content: "";
+      position: absolute;
+      top: -2px;
+      z-index: 1;
+      left: -2px;
+      width: 0;
+      height: calc(100% + 4px);
+      background-image: linear-gradient(
+        to left,
+        #df3ef8 0%,
+        #7462f9 50%,
+        #227df9 100%
+      );
+    }
+
+    &:hover {
+      &::after {
+        right: 0px;
+        width: 100%;
+        left: unset;
+      }
+      span {
+        color: white;
+      }
+    }
+    span {
+      position: relative;
+      z-index: 3;
+    }
+  }
+
+  &.--full-width {
+    width: 100%;
+  }
+}

@@ -1,0 +1,11 @@
+.x-box {
+  padding: rem(10) rem(15);
+
+  &.round {
+    border-radius: rem(10);
+  }
+
+  &.shadow {
+    box-shadow: 0 2px 12px 0 #0000001a;
+  }
+}
